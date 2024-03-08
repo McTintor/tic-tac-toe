@@ -65,3 +65,18 @@ footer {
     position: absolute;
     bottom: 0;
 }
+
+.reset {
+    height: 2rem;
+    width: 5rem;
+    color: black;
+    font-weight: bold;
+    font-size: 1rem;
+    background-color: aliceblue;
+    border: 1px solid gold;
+    box-shadow: 10px 5px 5px gray;
+}
+
+.reset:hover {
+    background-color: aquamarine;
+}

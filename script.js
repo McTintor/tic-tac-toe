@@ -45,26 +45,41 @@ const winningCombinations = [
      document.querySelector('.turnandwin').textContent = `${currentPlayer.name}'s turn`;
  }
  
- // Make move
- function makeMove(currentPlayer, index) {
-     if (board[index] === '') {
-         board[index] = currentPlayer.sign;
-         document.querySelector(`.gamecell[data-cell-id="${index}"]`).textContent = currentPlayer.sign;
-         
-         // Check for a win or draw
-         if (checkWin(currentPlayer.sign)) {
-             alert(`${currentPlayer.name} wins!`);
-             currentPlayer.incrementScore();
-             updateScoreDisplay();
-             resetGame();
-         } else if (isBoardFull()) {
-             alert('Draw!');
-             resetGame();
-         } else {
-             switchTurn();
-         }
-     }
- }
+// Make move
+function makeMove(currentPlayer, index) {
+    if (board[index] === '') {
+        board[index] = currentPlayer.sign;
+        document.querySelector(`.gamecell[data-cell-id="${index}"]`).textContent = currentPlayer.sign;
+        
+        // Check for a win or draw
+        if (checkWin(currentPlayer.sign)) {
+            // Display the final character immediately
+            document.querySelector('.turnandwin').textContent = `${currentPlayer.name} wins with ${currentPlayer.sign}!`;
+            
+            // Update score display
+            if (currentPlayer === player1) {
+            player1.incrementScore();
+            updateScoreDisplay();
+            } else {
+                player2.incrementScore();
+                updateScoreDisplay();
+            }
+            
+            // Delay the alert message to show the final character
+            setTimeout(function() {
+                alert(`${currentPlayer.name} wins!`);
+                resetGame();
+            }, 100);
+        } else if (isBoardFull()) {
+            setTimeout(function() {
+                alert(`Draw`);
+                resetGame();
+            }, 100);
+        } else {
+            switchTurn();
+        }
+    }
+}
  
  // Check win
  function checkWin(sign) {
@@ -104,4 +119,3 @@ const winningCombinations = [
  
  // Initialize game
  initGame();
- 
