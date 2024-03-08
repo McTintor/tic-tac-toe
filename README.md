@@ -1,6 +1,7 @@
 # Tic Tac Toe Game
 
 This is a simple implementation of the classic Tic Tac Toe game using HTML, CSS, and JavaScript.
+
 Live version here: https://mctintor.github.io/tic-tac-toe/
 
 ## How to Play
